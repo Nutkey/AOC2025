@@ -6,7 +6,7 @@ My solutions are largely in Python, though I did implement some in C++ or Java.
 
 # Structure
 
-Every folder `dayN` contains an
+Every folder `Day_<N>` contains an
 
 * `answer.py` which is the python script that can be executed to solve the problem for a provided input set of data
 * `analysis.txt` - if present, discusses the complexity of the problem.
