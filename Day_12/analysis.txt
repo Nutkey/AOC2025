@@ -1,0 +1,29 @@
+Fitting shapes into spaces
+
+1) We need to fit N presents in a space (e.g.. 50x50)
+Each present has a location x,y and a rotation of 0-3, and a flip of 0-1.
+Each present has a defined shape. There are 6 shapes, so really 6*8 == 48 after considering DOF (ok, some have lines of symmetry)
+
+We want to know how many regions can contain their presents.
+
+Brute force
+
+Place a shape top-left (48 choices) - 48 paths generated in the 3x3 block there.
+Move to next 3x3 block
+Pick the next square - certainly a blank square in the next 3x3 block, or one of the blank spaces.
+Try to place a shape (48). If no possibilities, that square is removed from future consideration
+48*48*N squares
+
+So approximately (48*9)^(250)
+
+In other words, very large
+
+Also packing is an NP problem
+
+Look at the data. Sample data is not good.
+
+Input shapes however - fit very nicely together. Work out a packing fraction?
+
+On counting the blocks in the input shapes and the blocks in the space, I discovered that as far as the input data was concerned (but not the sample), all the inputs that were not solvable had a packing fraction greater than 1 - that is, the set of presents would not fit in the target space simply because the number of grid squares in the target space was insufficient. No "packing" was required
+
+

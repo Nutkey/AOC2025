@@ -12,6 +12,7 @@ Every folder `dayN` contains an
 * `analysis.txt` - if present, discusses the complexity of the problem.
 * `sample.txt` - the same input provided in the problem
 * `input.txt` - the full input provided in the problem
+* `requirements.txt` - if present, lists python modules needed to run the solution. If no requirements, this file will be absent
 
 To run the solver, execute the following shell commands
 ```
