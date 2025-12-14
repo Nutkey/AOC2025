@@ -16,6 +16,11 @@ Every folder `Day_<N>` contains an
 
 To run the solver, execute the following shell commands
 ```
+python answer.py <input file> [--two]
+```
+
+If you get an error such as `No module named 'XXX''` then run the following commands
+```
 python -mvenv .venv
 . ./.venv/bin/activate
 pip install -rrequirements.txt
