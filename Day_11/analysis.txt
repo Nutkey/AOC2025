@@ -1,0 +1,8 @@
+Brute force, sticking a finger in the air, will be 2^600 paths (600 devices, two choices per device).
+
+That will take A Long Time (2^10 = 10^3 so 2^600 = 10^180)
+
+However, there are only 600 devices, so we can just cache the number of paths for each one. That reduces the whole problem to O(n).
+
+
+
