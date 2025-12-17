@@ -1,0 +1,25 @@
+https://adventofcode.com/2025/day/9
+
+Part 1 is easy. We have about 500 points in the input set. So we want to maximise the area formed by a selection of 2 points. 500C2 is 2.5 million, so computing that is no problem.
+
+Part 2 is harder. We need to determine, for each candidate rect, if any part of it is outside the boundary path formed by the points. 
+
+Inspection of the data using matplotlib showed that we don't need to worry about S-shaped snake paths which could give us a false failure
+
+Therefore we can assume that if the boundary path has a path segment that termines fully inside (excluding edges) a candidate rect, then the rect is partly outside the boundary.
+
+For example, the rectangle below
+
+XXX
+XXX
+XXX
+
+could be filled by the complicated path below which has a sub-path end at 1,1. We do NOT worry about this. 
+R1  R6 R7 R7
+R1 R2 R3 R5
+R1 R2 R3 R5
+           R4 R4 
+           
+ The algorithm is therefore
+ 
+ For each candidate rect, check all subpath segments Pn - > Pn+1 - if no subpath crosses an edge, then there is no problem. 

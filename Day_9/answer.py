@@ -71,7 +71,7 @@ def check(t1, t2):
 			if not minx <= v_x <= maxx:
 				continue
 
-			# Our line intercepts on the x-coord. Do either the top or the bottom fall inside the rect?
+			# Our line intercepts on the x-coord. Does the line cross the top or bottom edge of the rect			
 			if  min_v_y < miny < max_v_y or min_v_y <  maxy < max_v_y:
 				return False
 			
@@ -83,7 +83,7 @@ def check(t1, t2):
 			if not miny <= h_y <= maxy:
 				continue
 				
-			# Our line intercepts the rectangle. Is it all above or all below?
+			# Our line intercepts on the x-coord. Does the line cross the left or right edge of the rect			
 			if  min_h_x <= minx <= max_h_x or min_h_x <= maxx <= max_h_x:
 				return False
 
