@@ -18,8 +18,12 @@ with open(args.inputfile, "r+") as data:
 		coords = [int(x) for x in jb.split(',')]
 		jbs.append(coords)
 		
+# Keep track of all circuits (connected sets of JBs) that have been formed.
+# This includes sets of size 1 (a JB not connected to any others)
 circuits = []
-
+# Build initial circuit set
+for i in range(0, len(jbs)):
+	circuits.append({i})
 
 def range2(jb1, jb2):
 	dx = jb1[0] - jb2[0]
@@ -46,35 +50,24 @@ def findClosest(jbs, dists):
 		nextPick += 1
 		iCircuit = circuitFor(i)
 		jCircuit = circuitFor(j)
-		if args.two:
-			# Does connecting i and j change the circuits? If not continue
-			if iCircuit == jCircuit:
-				continue
 		return (iCircuit, jCircuit, i, j)
 								
 def circuitFor(i):
-	# Is i in a circuit?
-	found = None
 	for c in range(0, len(circuits)):
 		if i in circuits[c]:
 			return c
-	circuit = [i]
-	circuits.append(circuit)
-	return len(circuits)-1
 
 dists = computeDists(jbs)
 
 def connect():
 	# Finding closest JBs is O(n2) - but live with that for the moment
 	(iCircuit,jCircuit, i, j) = findClosest(jbs, dists)	
-	if args.two:
-		assert(iCircuit != jCircuit)	
 	# Join j to i if not already in same circuit
 	if iCircuit != jCircuit:
 		jCirc = circuits[jCircuit]
 		# circuits[jCircuit] = []	
 		for k in circuits[jCircuit]:
-			circuits[iCircuit].append(k)
+			circuits[iCircuit].add(k)
 		del circuits[jCircuit]
 	return (i,j)
 					
