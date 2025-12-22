@@ -8,39 +8,9 @@ parser = argparse.ArgumentParser()
 parser.add_argument("inputfile")
 parser.add_argument("--two", help="part two", action="store_true")
 args = parser.parse_args()
-
-# Load tile positions 
-tiles = []
-with open(args.inputfile, "r+") as data:
-	tiles = [list(map(int, l.split(','))) for l in data]
-
-def isInsideRectFormedBy(i, j, pos):
-	# To be inside, must have x between xi and xj (inclusive). Same for y
-	x1 = tiles[i][0]
-	x2 = tiles[j][0]
-	y1 = tiles[i][1]
-	y2 = tiles[j][1]
-	maxx = max(x1, x2)
-	minx = min(x1, x2)
-	maxy = max(y1, y2)
-	miny = min(y1, y2)
 	
-	x = pos[0]
-	y = pos[1]
-	
-	return minx < x and x < maxx and miny < y and y < maxy
-	
-
-def normalize(v):
-	if v == 0:
-		return v
-	if v < 0:
-		return -1
-	else:
-		return 1
-	
-# For two tiles i and j, check that every point in the external path is inside he rect formed by them.
-
+# For two tiles i and j, check that every point in the external path is inside the rect formed by them.
+# If it is, return true.
 
 def check(t1, t2):
 	# Provided that the boundary line has no segments that fall inside the test rectangle, we are okay
@@ -95,8 +65,13 @@ def check(t1, t2):
 # Find two tiles with max value of dX * dY
 
 
-# Build a set of posssible rects
-rects = []
+# Load tile positions 
+tiles = []
+with open(args.inputfile, "r+") as data:
+	tiles = [list(map(int, l.split(','))) for l in data]
+
+# Inspect all the possible rects formed by two tiles, and work out which has the largest
+# are
 maxA = 0
 
 from itertools import combinations

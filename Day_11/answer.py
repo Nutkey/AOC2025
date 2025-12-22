@@ -18,8 +18,8 @@ with open(args.inputfile, "r+") as data:
 		connections[name] = (conns.strip().split(" "))
 
 
-fft = False
-dac = False
+
+# In Part 2 we require that all paths pass through FFT and DAC. 
 
 # If there are loops, the the number of paths is infinite and the problem is insoluble. Therefore there are no loops.
 # That means we will only visit each mustVisit node once. So we just need to maintain a count of how many we have visited

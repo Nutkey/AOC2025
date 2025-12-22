@@ -20,6 +20,9 @@ R1 R2 R3 R5
 R1 R2 R3 R5
            R4 R4 
            
- The algorithm is therefore
+ The algorithm is therefore:
+
+ 	For each candidate rect, check all subpath segments Pn - > Pn+1 - if no subpath crosses an edge, then there is no problem. 
+ 	
  
- For each candidate rect, check all subpath segments Pn - > Pn+1 - if no subpath crosses an edge, then there is no problem. 
+ 

@@ -1,6 +1,6 @@
 https://adventofcode.com/2025/day/8
 
-For part 1, we have 1000 JBs, and we find the 1000 pairs that are closest together.
+For part 1, we have 1000 JBs, and we find the 1000 pairs that are closest together. The JBs are laid out on an X-Y grid, where X and Y are both max around 100,000
 
 So we calculate the distance for every pair, which is 1000C2, call it 5 million. Which is fine for brute forcing. If I wanted to optimise, I'd segment the search space.
 
@@ -8,6 +8,4 @@ For example, I could split the search area into a 10x10 space, giving me 100 buc
 
 For part 2, we connect pairs until all JBs are in one big circuit. Every time we connect a pair, we merge the circuits.
 
-Note that we find the circuit for a JB by iterating through the entire set of circuits, which is a bit horrible. 
-
-We could give circuits IDs (instead of just storing them in a list, use a dict), and then have a mapping from JBs to circuits. 
+Note that we find the circuit for a JB by iterating through the entire set of circuits, which is a bit horrible. 2We could give circuits IDs (instead of just storing them in a list, use a dict), and then have a mapping from JBs to circuits. 

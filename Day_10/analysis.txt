@@ -1,0 +1,18 @@
+Part 2 consists of a set of incomplete linear equations - incomplete because there are multiple solutions. 
+
+We have this in the matrix form 
+
+E * B  = C
+
+B is the number of times each button is pressed as <buttons> x 1 matrix
+C is the Joltage counter requirements  expressed as a <counters> x 1 matrix
+E is the <counters> x <buttons> matrix expressing the effect of pressing each button on each joltage level. 
+
+For example, the first row contains <buttons> elements. Each element is 0, or 1. 1 if pressing the button affects the joltage level of the first counter. 
+The second row is the same, but now dealing with the second counter.
+
+Initially I thought I could calculate the inverse of E, but it is a singular matrix, which should not have surprised me. 
+
+I then wrote the beginnings of a linear equation solver that was capable of subtracting equations from each other. Then I read a hint about using Z3, and rapidly derived a solution.
+
+The only difficulty is that Z3 does not yield the minimum solution. The fix for that is to find ANY solution, then ask Z3 for a smaller one, repeatedly, until it fails.
